@@ -1,4 +1,4 @@
 module.exports = {
     accessTokens: require('./accessTokens'),
-    logs: require('./logs')
+    log: require('./log')
 };

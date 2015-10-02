@@ -1,10 +1,11 @@
 {
-  "name": "rhom-common",
+  "name": "service-utils",
   "version": "1.0.0",
   "description": "",
   "main": "./index.js",
   "dependencies": {
-    "jsonwebtoken": "^5.0.5"
+    "jsonwebtoken": "^5.0.5",
+    "winston": "^1.0.2"
   },
   "devDependencies": {
     "mocha": "^2.3.3"
