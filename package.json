@@ -1,0 +1,17 @@
+{
+  "name": "rhom-common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "dependencies": {
+    "jsonwebtoken": "^5.0.5"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
