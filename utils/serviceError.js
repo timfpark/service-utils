@@ -1,3 +1,5 @@
+var util = require('util');
+
 var ServiceError = function(statusCode, message) {
     Error.captureStackTrace(this, this);
 
@@ -6,7 +8,7 @@ var ServiceError = function(statusCode, message) {
 };
 
 ServiceError.BAD_REQUEST = 400;
-ServiecError.INTERNAL_ERROR = 500;
+ServiceError.INTERNAL_ERROR = 500;
 
 util.inherits(ServiceError, Error);
 

@@ -1,4 +1,4 @@
 module.exports = {
-    services = require('./services'),
-    utils = require('./utils')
+    services: require('./services'),
+    utils: require('./utils')
 };
