@@ -5,7 +5,7 @@ var handleError = function(res, err) {
     services.log.error(err.message);
 
     res.contentType('application/json');
-    res.send(statusCode, { error: err });
+    res.sendStatus(statusCode).send({ error: err });
 };
 
 module.exports = handleError;
