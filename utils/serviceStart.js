@@ -2,7 +2,7 @@ var async = require('async');
 
 module.exports = function(server, callback) {
     async.whilst(function() {
-        return !app._connectionKey;
+        return !server._connectionKey;
     }, function(callback) {
         setTimeout(callback, 100);
     }, function(err) {
@@ -10,6 +10,6 @@ module.exports = function(server, callback) {
             console.log(err);
             return process.exit(0);
         }
-        done();
+        callback();
     });
 };
