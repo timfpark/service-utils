@@ -1,4 +1,5 @@
 var HttpStatus = require('http-status-codes')
+  , passport = require('passport')
   , utils = require('../utils');
 
 module.exports = function(req, res, next) {
