@@ -4,9 +4,9 @@ var assert = require('assert')
 
 describe('accessTokens service', function() {
     it('can verify valid access token', function(done) {
-        services.accessTokens.verify(fixtures.accessToken, function(err, userId) {
+        services.accessTokens.verify(fixtures.accessToken, function(err, user) {
             assert(!err);
-            assert.equal(userId, fixtures.userId);
+            assert.equal(user.id, fixtures.userId);
             done();
         });
     });

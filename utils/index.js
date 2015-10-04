@@ -1,4 +1,5 @@
 module.exports = {
     handleError: require('./handleError'),
-    ServiceError: require('./serviceError')
+    ServiceError: require('./serviceError'),
+    waitForServiceStart: require('./serviceStart')
 };

@@ -1,9 +1,10 @@
 {
   "name": "service-utils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "./index.js",
   "dependencies": {
+    "async": "^1.4.2",
     "http-status-codes": "^1.0.5",
     "jsonwebtoken": "^5.0.5",
     "passport": "^0.3.0",
