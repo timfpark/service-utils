@@ -1,6 +1,6 @@
 {
   "name": "service-utils",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "./index.js",
   "dependencies": {
@@ -17,5 +17,5 @@
     "test": "mocha"
   },
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
