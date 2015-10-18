@@ -6,7 +6,7 @@ var assert = require('assert')
 var responseMock = {
     contentType: function(type) {},
     send: function(data) {},
-    sendStatus: function(data) { return this; }
+    status: function(data) { return this; }
 };
 
 describe('utils', function() {
@@ -15,8 +15,6 @@ describe('utils', function() {
 
         var serviceError = new ServiceError(HttpStatus.BAD_REQUEST, "This was a bad request!");
         common.utils.handleError(responseMock, serviceError);
-
-        console.log(serviceError);
 
         assert.equal(serviceError.statusCode, 400);
 
