@@ -1,5 +1,6 @@
 module.exports = {
-    handleError: require('./handleError'),
-    ServiceError: require('./serviceError'),
-    waitForServiceStart: require('./serviceStart')
+    handleError:                    require('./handleError'),
+    invertedFixedWidthTimestamp:    require('./invertedTimestamp'),
+    ServiceError:                   require('./serviceError'),
+    waitForServiceStart:            require('./serviceStart')
 };
