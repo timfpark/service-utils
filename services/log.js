@@ -2,21 +2,27 @@
 
 let winston = require('winston');
 require('winston-papertrail').Papertrail;
+require('winston-loggly');
 
-let transports = [
-    new (winston.transports.Console)({ colorize: true, timestamp: true })
-];
-
-if (process.env.PAPERTRAIL_HOST && process.env.PAPERTRAIL_PORT) {
-    transports.push(
-        new (winston.transports.Papertrail)({
-            host: process.env.PAPERTRAIL_HOST,
-            port: process.env.PAPERTRAIL_PORT
-        })
-    );
+if (process.env.LOGGLY_TOKEN && process.env.LOGGLY_SUBDOMAIN && process.env.LOGGLY_TAG) {
+    console.log('adding loggly');
+    winston.add(winston.transports.Loggly, {
+        token: "62e963f7-2abe-4b98-b385-124a1f7285a8",
+        subdomain: "timpark",
+        tags: ["Winston-NodeJS"],
+        json:true
+    });
 }
 
-module.exports = new winston.Logger({
-    level: 'info',
-    transports: transports
+winston.remove(winston.transports.Console);
+winston.add(winston.transports.Console, {
+    colorize: true,
+    timestamp: true
 });
+
+module.exports = {
+    debug: function(log) { winston.log('debug', log); },
+    error: function(log) { winston.log('error', log); },
+    info:  function(log) { winston.log('info', log); },
+    warn:  function(log) { winston.log('warn', log); }
+};
