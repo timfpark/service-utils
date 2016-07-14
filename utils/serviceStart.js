@@ -7,7 +7,6 @@ module.exports = function(server, callback) {
         setTimeout(callback, 100);
     }, function(err) {
         if (err) {
-            console.log(err);
             return process.exit(0);
         }
         callback();

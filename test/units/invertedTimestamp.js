@@ -5,7 +5,6 @@ const assert = require('assert'),
 
 describe('invertedTimestamp function', function() {
     it('can generate inverted timestamps', function(done) {
-        console.dir(utils);
         var normalTimestamp = new Date(1453637008682.236);
         var normalRowKey = utils.invertedFixedWidthTimestamp(normalTimestamp);
         assert.equal(normalRowKey, '8638546362991318');

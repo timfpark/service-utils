@@ -1,19 +1,22 @@
-var winston = require('winston');
+'use strict'
 
-//if (process.env.LOGGLY_SUBDOMAIN && process.env.LOGGLY_INPUT_TOKEN &&
-//    process.env.LOGGLY_USERNAME && process.env.LOGGLY_PASSWORD) {
+let winston = require('winston');
+require('winston-papertrail').Papertrail;
 
-//    winston.add(Loggly, {
-//        "subdomain": process.env.LOGGLY_SUBDOMAIN,
-//        "inputToken": process.env.LOGGLY_INPUT_TOKEN,
-//        "auth": {
-//            "username": process.env.LOGGLY_USERNAME,
-//           "password": process.env.LOGGLY_PASSWORD
-//        }
-//    });
-//}
+let transports = [
+    new (winston.transports.Console)({ colorize: true, timestamp: true })
+];
 
-winston.remove(winston.transports.Console);
-winston.add(winston.transports.Console, { colorize: true, timestamp: true, level: 'info' });
+if (process.env.PAPERTRAIL_HOST && process.env.PAPERTRAIL_PORT) {
+    transports.push(
+        new (winston.transports.Papertrail)({
+            host: process.env.PAPERTRAIL_HOST,
+            port: process.env.PAPERTRAIL_PORT
+        })
+    );
+}
 
-module.exports = winston;
+module.exports = new winston.Logger({
+    level: 'info',
+    transports: transports
+});
