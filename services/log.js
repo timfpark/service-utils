@@ -1,15 +1,12 @@
 'use strict'
 
 let winston = require('winston');
-require('winston-loggly');
+let Logger = require('le_node');
 
-if (process.env.LOGGLY_TOKEN && process.env.LOGGLY_SUBDOMAIN && process.env.LOGGLY_TAG) {
-    console.log('adding loggly');
-    winston.add(winston.transports.Loggly, {
-        token: process.env.LOGGLY_TOKEN,
-        subdomain: process.env.LOGGLY_SUBDOMAIN,
-        tags: [process.env.LOGGLY_TAG],
-        json: true
+if (process.env.LOGENTRIES_TOKEN) {
+    console.log('adding log entries');
+    winston.add(winston.transports.Logentries, {
+        token: process.env.LOGENTRIES_TOKEN
     });
 }
 
