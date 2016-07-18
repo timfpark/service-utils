@@ -4,7 +4,6 @@ let winston = require('winston');
 let Logger = require('le_node');
 
 if (process.env.LOGENTRIES_TOKEN) {
-    console.log('adding log entries');
     winston.add(winston.transports.Logentries, {
         token: process.env.LOGENTRIES_TOKEN
     });
