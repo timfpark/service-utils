@@ -3,9 +3,7 @@
 let winston = require('winston');
 let Logger = require('le_node');
 
-console.log('checking for token');
 if (process.env.LOGENTRIES_TOKEN) {
-    console.log('found token');
     winston.add(winston.transports.Logentries, {
         token: process.env.LOGENTRIES_TOKEN
     });
