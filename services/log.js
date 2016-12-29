@@ -4,20 +4,10 @@ let winston = require('winston');
 require('winston-loggly-bulk');
 
 if (process.env.LOGGLY_TOKEN && process.env.LOGGLY_SUBDOMAIN && process.env.LOGGLY_TAG) {
-    console.log('adding loggly transport');
-/*
     winston.add(winston.transports.Loggly, {
         token: process.env.LOGGLY_TOKEN,
         subdomain: process.env.LOGGLY_SUBDOMAIN,
-        tags: [process.env.LOGGLY_TAG],
-        json: true
-    });
-*/
-    winston.add(winston.transports.Loggly, {
-        token: "dbdde49a-2881-4cac-9635-202d7331637d",
-        subdomain: "rhom",
-        tags: ["Winston-NodeJS"],
-        json:true
+        tags: [process.env.LOGGLY_TAG]
     });
 }
 
