@@ -7,7 +7,8 @@ if (process.env.LOGGLY_TOKEN && process.env.LOGGLY_SUBDOMAIN && process.env.LOGG
     winston.add(winston.transports.Loggly, {
         token: process.env.LOGGLY_TOKEN,
         subdomain: process.env.LOGGLY_SUBDOMAIN,
-        tags: [process.env.LOGGLY_TAG]
+        tags: [process.env.LOGGLY_TAG],
+        json: true
     });
 }
 
