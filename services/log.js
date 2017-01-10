@@ -1,14 +1,21 @@
 'use strict'
 
 let winston = require('winston');
-require('winston-loggly-bulk');
 
 if (process.env.LOGGLY_TOKEN && process.env.LOGGLY_SUBDOMAIN && process.env.LOGGLY_TAG) {
+    require('winston-loggly-bulk');
     winston.add(winston.transports.Loggly, {
         token: process.env.LOGGLY_TOKEN,
         subdomain: process.env.LOGGLY_SUBDOMAIN,
         tags: [process.env.LOGGLY_TAG],
         json: true
+    });
+}
+
+if (process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
+    let aiLogger = require('winston-azure-application-insights').AzureApplicationInsightsLogger;
+    winston.add(aiLogger, {
+        key: process.env.APPINSIGHTS_INSTRUMENTATIONKEY
     });
 }
 

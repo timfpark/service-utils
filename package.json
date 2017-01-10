@@ -1,6 +1,6 @@
 {
   "name": "service-utils",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "",
   "main": "./index.js",
   "dependencies": {
@@ -10,6 +10,7 @@
     "passport": "^0.3.0",
     "pg": "^6.0.3",
     "winston": "^2.2.0",
+    "winston-azure-application-insights": "^1.1.0",
     "winston-loggly-bulk": "^1.3.4"
   },
   "devDependencies": {
