@@ -1,39 +1,27 @@
 'use strict'
 
-let winston = require('winston');
+const request = require('request');
 
-if (process.env.LOGGLY_TOKEN && process.env.LOGGLY_SUBDOMAIN && process.env.LOGGLY_TAG) {
-    require('winston-loggly-bulk');
-    winston.add(winston.transports.Loggly, {
-        token: process.env.LOGGLY_TOKEN,
-        subdomain: process.env.LOGGLY_SUBDOMAIN,
-        tags: [process.env.LOGGLY_TAG],
+const logsEndpoint = "https://logs.rhom.io/logs";
+
+function processLog(severity, tags, log) {
+    let logObject = {
+        severity,
+        tags,
+        log
+    };
+
+    request.post(logsEndpoint, {
+        body: logObject,
         json: true
     });
 }
 
-if (process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
-    let aiLogger = require('winston-azure-application-insights').AzureApplicationInsightsLogger;
-    winston.add(aiLogger, {
-        key: process.env.APPINSIGHTS_INSTRUMENTATIONKEY
-    });
-}
-
-winston.remove(winston.transports.Console);
-winston.add(winston.transports.Console, {
-    colorize: true,
-    timestamp: true
-});
-
-module.exports = {
-    debug: function(log) { winston.log('debug', log); },
-    error: function(log) { winston.log('error', log); },
-    info:  function(log) { winston.log('info', log); },
-    warn:  function(log) { winston.log('warn', log); },
-
-    stream: {
-        write: function(message, encoding) {
-            winston.log('info', message);
-        }
-    }
+module.exports = function(tags) {
+    return {
+        debug: function(log) { processLog('debug', tags, log); },
+        error: function(log) { processLog('error', tags, log); },
+        info:  function(log) { processLog('info', tags, log); },
+        warn:  function(log) { processLog('warn', tags, log); },
+    };
 };
