@@ -1,10 +1,11 @@
-var assert = require('assert')
-  , fixtures = require('../fixtures')
-  , services = require('../../services');
+const assert = require('assert'),
+      fixtures = require('../fixtures'),
+      services = require('../../services'),
+      log = services.log("test");
 
 describe('log service', function() {
     it('can log', function(done) {
-        services.log.info("test");
+        log.info("test");
         done();
     });
 });

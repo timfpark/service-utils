@@ -4,12 +4,16 @@ const request = require('request');
 
 const logsEndpoint = "https://logs.rhom.io/logs";
 
-function processLog(severity, tags, log) {
+function processLog(severity, tag, log) {
     let logObject = {
         severity,
-        tags,
+        tag,
         log
     };
+
+    let logString = JSON.stringify(log);
+
+    console.log(`${new Date()}: ${severity}: ${tag}: ${log}`);
 
     request.post(logsEndpoint, {
         body: logObject,
@@ -17,11 +21,11 @@ function processLog(severity, tags, log) {
     });
 }
 
-module.exports = function(tags) {
+module.exports = function(tag) {
     return {
-        debug: function(log) { processLog('debug', tags, log); },
-        error: function(log) { processLog('error', tags, log); },
-        info:  function(log) { processLog('info', tags, log); },
-        warn:  function(log) { processLog('warn', tags, log); },
+        debug: function(log) { processLog('debug', tag, log); },
+        error: function(log) { processLog('error', tag, log); },
+        info:  function(log) { processLog('info', tag, log); },
+        warn:  function(log) { processLog('warn', tag, log); },
     };
 };

@@ -1,8 +1,9 @@
-var services = require('../services');
+const services = require('../services'),
+      log = services.log("handleError");
 
 var handleError = function(res, err) {
     var statusCode = err.statusCode || 400;
-    services.log.error(err.message);
+    log.error(err.message);
 
     res.contentType('application/json');
     res.status(statusCode).send({ error: err });
