@@ -27,5 +27,11 @@ module.exports = function(tag) {
         error: function(log) { processLog('error', tag, log); },
         info:  function(log) { processLog('info', tag, log); },
         warn:  function(log) { processLog('warn', tag, log); },
+
+        stream: {
+            write: function(log, encoding) {
+                processLog('info', tag, log);
+            }
+        }
     };
 };
