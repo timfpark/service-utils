@@ -13,12 +13,14 @@ function processLog(severity, tag, log) {
 
     let logString = JSON.stringify(log);
 
-    console.log(`${new Date()}: ${severity}: ${tag}: ${log}`);
+    console.log(`${severity}: ${tag}: ${log}`);
 
-    request.post(logsEndpoint, {
-        body: logObject,
-        json: true
-    });
+    if (process.env.POST_LOGS) {
+        request.post(logsEndpoint, {
+            body: logObject,
+            json: true
+        });
+    }
 }
 
 module.exports = function(tag) {
