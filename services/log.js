@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-const logsEndpoint = "https://logs.rhom.io/logs";
+const logsEndpoint = "https://logs.trailguru.app/logs";
 
 function processLog(severity, tag, log) {
     let logObject = {
