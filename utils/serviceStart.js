@@ -2,9 +2,8 @@ const async = require('async');
 
 module.exports = function(server, callback) {
     async.whilst(
-        () => {
-            console.dir(server);
-            return !server._connectionKey;
+        callback => {
+            return callback(null, !server._connectionKey);
         },
         callback => {
             setTimeout(callback, 100);
